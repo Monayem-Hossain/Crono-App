@@ -4,7 +4,7 @@
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.9.0-blue.svg)](https://kotlinlang.org)
 [![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-1.6.0-brightgreen.svg)](https://developer.android.com/jetpack/compose)
 
-A modern, offline-first Android application designed to help students effortlessly manage their weekly class schedules. Built entirely with Jetpack Compose and the latest Android technologies, this app provides a clean, intuitive, and powerful tool for academic organization.
+A modern, AI created, offline-first Android application designed to help students effortlessly manage their weekly class schedules. Built entirely with Jetpack Compose and the latest Android technologies, this app provides a clean, intuitive, and powerful tool for academic organization.
 
 ## ✨ Features
 
