@@ -49,7 +49,7 @@ To get a local copy up and running, follow these simple steps.
 
 1.  **Clone the repository**:
     ```sh
-    git clone https://github.com/[your_username]/[your_repository].git
+    https://github.com/freeloader3/Class-Schedule.git
     ```
 2.  **Open in Android Studio**:
     Open the cloned project directly in Android Studio.
