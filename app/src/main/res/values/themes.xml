@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.ClassSchedule" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Crono" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">#0F1218</item>
+        <item name="android:statusBarColor">#0F1218</item>
+        <item name="android:navigationBarColor">#0F1218</item>
+    </style>
+
+    <style name="Theme.Crono.Splash" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_bg</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:statusBarColor">#0D0F14</item>
+        <item name="android:navigationBarColor">#0D0F14</item>
+    </style>
 </resources>

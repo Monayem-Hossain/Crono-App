@@ -1,74 +1,217 @@
-# Class Schedule App 🚀
+# Crono ⏱️ - Academic Schedule & Routine Manager
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.9.0-blue.svg)](https://kotlinlang.org)
-[![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-1.6.0-brightgreen.svg)](https://developer.android.com/jetpack/compose)
+[![Android Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=flat-square&logo=android)](https://www.android.com)
+[![Min SDK](https://img.shields.io/badge/Min%20SDK-24%20(Android%207.0)-brightgreen.svg?style=flat-square)](https://developer.android.com)
+[![Target SDK](https://img.shields.io/badge/Target%20SDK-34%20(Android%2014)-blue.svg?style=flat-square)](https://developer.android.com)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-purple.svg?style=flat-square&logo=kotlin)](https://kotlinlang.org)
+[![Jetpack Compose](https://img.shields.io/badge/UI-Jetpack%20Compose-4285F4.svg?style=flat-square&logo=jetpackcompose)](https://developer.android.com/jetpack/compose)
+[![Room Database](https://img.shields.io/badge/Storage-Room%202.8.5-red.svg?style=flat-square)](https://developer.android.com/training/data-storage/room)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 
-A modern, AI created, offline-first Android application designed to help students effortlessly manage their weekly class schedules. Built entirely with Jetpack Compose and the latest Android technologies, this app provides a clean, intuitive, and powerful tool for academic organization.
+**Crono** is a modern, native Android application designed to help students seamlessly manage their
+academic routines, weekly class schedules, upcoming exams, and class tests (CTs). Built using
+**Jetpack Compose**, **Material 3**, **Room Database**, and **WorkManager**, Crono ensures students
+stay organized and never miss a class or exam.
 
-## ✨ Features
+---
 
-- **✍️ Full CRUD Functionality**: Easily **C**reate, **R**ead, **U**pdate, and **D**elete courses and class entries.
-- **🎨 Color-Coded Courses**: Assign unique colors to each course for a vibrant and easy-to-read schedule.
-- **🗓️ Dynamic Schedule Views**: Toggle between a focused **"Today"** view and a comprehensive **"Full Week"** overview of your timetable.
-- **🔴 Live Class Indicator**: An "ON GOING" badge automatically highlights any class that is currently in session, so you never lose track of where you need to be.
-- **🗄️ Robust Local Storage**: Powered by **Room Database**, all your schedule data is stored securely on your device, making it available offline, anytime.
-- **📱 Modern UI/UX**: Built with **Material 3** and Jetpack Compose for a beautiful, responsive, and state-driven user experience.
+## 🌟 Key Features
+
+- 📅 **Weekly Timetable & Schedule Management**:
+    - Interactive daily routine view organized by day of the week.
+    - Color-coded course cards displaying course code, instructor, room number, and time slot.
+    - Quick toggle between compact and expanded schedule views.
+    - Instant details modal for each subject and class entry.
+
+- 📝 **Class Test (CT) & Exam Tracker**:
+    - Track upcoming class tests and terminal exams.
+    - Status management for class tests (pending vs. confirmed/completed).
+    - Consolidated view of all scheduled assessments sorted chronologically.
+
+- 🔔 **Smart Automated Background Notifications**:
+    - Integrated with **WorkManager** (`CTWorker`) executing periodic checks every 15 minutes.
+    - High-priority system notifications for upcoming class tests on test day.
+    - Interactive confirmation notifications post-test to update test status.
+
+- ⚠️ **Time Conflict Detection**:
+    - Configurable schedule conflict preferences.
+    - Highlights overlapping class schedules and conflicting time slots in real time.
+
+- 🎨 **Dynamic UI & Font Customization**:
+    - Built with **Material 3** dynamic themes and custom color palettes.
+    - Dynamic font scaling controls via `FontSettingsManager`.
+    - Android 12+ SplashScreen API integration (`SplashActivity`).
+
+---
 
 ## 📸 Screenshots
 
-*(It is highly recommended to add screenshots or a GIF of your app in action to showcase its features visually.)*
+| Daily Schedule View | Manage Courses & Routine | Class Tests & Exams | Settings & Customization |
+|:-------------------:|:------------------------:|:-------------------:|:------------------------:|
+| *(Add Screenshot)*  |    *(Add Screenshot)*    | *(Add Screenshot)*  |    *(Add Screenshot)*    |
 
-| Main Screen (Today) | Update Schedule (Courses) | Full Schedule (Weekly View)  |
-| :---: | :---: |:----------------------------:|
-| ![Main Screen - Today](today.jpg) | ![Course Management Screen](course.jpg) | ![Weekly Schedule](week.jpg) |
+---
 
+## 🛠️ Architecture & Tech Stack
 
-## 🛠️ Tech Stack & Architecture
+Crono follows modern Android development practices and the **MVVM (Model-View-ViewModel)**
+architectural pattern with Kotlin Coroutines and Flow for reactive data streams.
 
-This project leverages a modern, all-Kotlin technology stack and follows Google's recommended best practices for Android development.
+```mermaid
+graph TD
+    A[UI Layer: Jetpack Compose / Material 3] --> B[ViewModel: ScheduleViewModel]
+    B --> C[Data Layer: ScheduleDao]
+    C --> D[(Room Database: AppDatabase)]
+    E[Background: WorkManager / CTWorker] --> C
+    E --> F[CTNotificationManager]
+```
 
-- **Core**: [Kotlin](https://kotlinlang.org/)
-- **UI**: [Jetpack Compose](https://developer.android.com/jetpack/compose) for a fully declarative and state-driven UI.
-- **Styling**: [Material 3](https://m3.material.io/) for the latest design components and theming.
-- **Architecture**: [MVVM (Model-View-ViewModel)](https://developer.android.com/jetpack/guide), using `ViewModel` from AndroidX to separate UI logic from business logic.
-- **Database**: [Room](https://developer.android.com/training/data-storage/room) for robust, offline-first data persistence.
-- **Asynchronicity**: [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) for managing background threads and database operations.
-- **Dependency Management**: [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html).
+### Core Technologies
 
-## 🚀 How to Build
+- **Language**: [Kotlin](https://kotlinlang.org/) (2.2.10)
+- **UI
+  Framework**: [Jetpack Compose](https://developer.android.com/jetpack/compose) + [Material 3](https://m3.material.io/)
+- **Database**: [Room Database](https://developer.android.com/training/data-storage/room) (2.8.5)
+  with [KSP](https://kotlinlang.org/docs/ksp-overview.html) (2.3.6)
+- **Background
+  Tasks**: [Android WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager)
+  (2.9.0)
+- **Asynchronous Flow**: Kotlin Coroutines & `StateFlow`
+- **Build System**: Gradle (AGP 9.4.1) using Kotlin DSL & Version Catalogs (`libs.versions.toml`)
 
-To get a local copy up and running, follow these simple steps.
+---
+
+## 📁 Project Structure
+
+```text
+com.monayem.crono
+├── CronoApp.kt                   # Application subclass initializing background workers
+├── MainActivity.kt               # Main dashboard displaying weekly schedule & reminders
+├── SecondActivity.kt             # Management hub for courses, schedules, exams & CTs
+├── SplashActivity.kt             # Splash screen entry activity
+├── CTWorker.kt                   # WorkManager CoroutineWorker for periodic CT checks
+├── CTNotificationManager.kt      # Channel and notification builder for CT alerts
+│
+├── data/                         # Persistence layer (Room DB)
+│   ├── AppDatabase.kt            # Room Database singleton
+│   ├── ScheduleDao.kt            # Data Access Object for entities and queries
+│   ├── Subject.kt                # Course/Subject Entity
+│   ├── ScheduleEntry.kt          # Timetable Slot Entity
+│   ├── ClassTestEntry.kt         # Class Test Entity
+│   ├── ExamEntry.kt              # Exam Entry Entity
+│   ├── ScheduleRelations.kt      # Relation data classes (1-to-many)
+│   ├── ConflictPreferenceManager.kt # Preferences for schedule conflict rules
+│   └── TimeUtils.kt              # Utility methods for date/time parsing & validation
+│
+└── ui/                           # UI Layer (Jetpack Compose)
+    ├── schedule/
+    │   ├── ScheduleViewModel.kt  # State holder for schedule & assessments
+    │   └── EditSchedulePopup.kt  # Schedule entry dialog
+    └── theme/
+        ├── Color.kt              # App color palettes
+        ├── FontSettings.kt       # Dynamic font sizing preferences
+        ├── Theme.kt              # Material3 Theme configuration
+        └── Type.kt               # Typography definition
+```
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Android Studio Iguana | 2023.2.1 or newer
-- JDK 17
+- **Android Studio**: Koala / Ladybug or newer (2024.1+)
+- **JDK**: JDK 17 or higher
+- **Android SDK**: API Level 34 (Build Tools 34.0.0+)
+- **Gradle**: 8.x+ (managed via Gradle Wrapper)
 
-### Installation
+### Installation & Building
 
-1.  **Clone the repository**:
-    ```sh
-    https://github.com/freeloader3/Class-Schedule.git
-    ```
-2.  **Open in Android Studio**:
-    Open the cloned project directly in Android Studio.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/Crono.git
+   cd Crono
+   ```
 
-3.  **Sync & Run**:
-    Allow Gradle to sync and download the necessary dependencies. Then, build and run the app on an emulator or a physical device.
+2. **Open in Android Studio**:
+    - Open Android Studio and select **Open**.
+    - Navigate to the cloned `Crono` project directory and click **OK**.
+
+3. **Build the project**:
+    - Sync Gradle project dependencies.
+    - Build via command line:
+      ```bash
+      ./gradlew assembleDebug
+      ```
+
+4. **Run on Device / Emulator**:
+    - Connect an Android device running API 24+ or launch an emulator.
+    - Run the app via Android Studio or using Gradle:
+      ```bash
+      ./gradlew installDebug
+      ```
+
+---
+
+## 🧪 Testing
+
+Run unit tests locally using Gradle:
+
+```bash
+./gradlew test
+```
+
+Run instrumented UI tests on an attached device or emulator:
+
+```bash
+./gradlew connectedAndroidTest
+```
+
+---
+
+## ⚙️ Configuration & Permissions
+
+Crono requests the following Android permissions:
+
+- `POST_NOTIFICATIONS` (Android 13+ / API 33+): Required for sending class test reminders and status
+  confirmation notifications.
+
+---
 
 ## 🤝 Contributing
 
-Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are welcome and appreciated! If you would like to contribute:
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+1. **Fork the Repository**
+2. **Create a Feature Branch**:
+   ```bash
+   git checkout -b feature/AmazingFeature
+   ```
+3. **Commit your changes**:
+   ```bash
+   git commit -m "Add AmazingFeature"
+   ```
+4. **Push to the branch**:
+   ```bash
+   git push origin feature/AmazingFeature
+   ```
+5. **Open a Pull Request**
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+---
 
-## 📝 License
+## 📄 License
 
-Distributed under the MIT License. See the `LICENSE` file for more information.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👤 Author
+
+Developed with ❤️ by **Monayem**.
+
+- GitHub: [@YOUR_GITHUB_USERNAME](https://github.com/YOUR_GITHUB_USERNAME)
+- Email: `your.email@example.com`
+
+---
+
+> *If you find Crono helpful, please consider giving this repository a ⭐️ on GitHub!*
