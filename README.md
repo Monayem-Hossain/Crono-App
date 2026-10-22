@@ -43,7 +43,7 @@ stay organized and never miss a class or exam.
     - Android 12+ SplashScreen API integration (`SplashActivity`).
 
 ---
-```
+
 ## 📸 Screenshots
 
 | Daily Schedule View | Manage Courses & Routine | Class Tests & Exams | Settings & Customization |
@@ -51,7 +51,7 @@ stay organized and never miss a class or exam.
 | *(Add Screenshot)*  |    *(Add Screenshot)*    | *(Add Screenshot)*  |    *(Add Screenshot)*    |
 
 ---
-```
+
 ## 🛠️ Architecture & Tech Stack
 
 Crono follows modern Android development practices and the **MVVM (Model-View-ViewModel)**
@@ -209,7 +209,7 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 Developed with ❤️ by **Monayem Hossain**.
 
-- GitHub: [@YOUR_GITHUB_USERNAME](https://github.com/Monayem-Hossain)
+- GitHub: [@Monayem Hossain](https://github.com/Monayem-Hossain)
 - Email: `monayamhossain2018@gmail.com`
 
 ---
