@@ -44,14 +44,6 @@ stay organized and never miss a class or exam.
 
 ---
 
-## 📸 Screenshots
-
-| Daily Schedule View | Manage Courses & Routine | Class Tests & Exams | Settings & Customization |
-|:-------------------:|:------------------------:|:-------------------:|:------------------------:|
-| *(Add Screenshot)*  |    *(Add Screenshot)*    | *(Add Screenshot)*  |    *(Add Screenshot)*    |
-
----
-
 ## 🛠️ Architecture & Tech Stack
 
 Crono follows modern Android development practices and the **MVVM (Model-View-ViewModel)**
@@ -211,6 +203,12 @@ Developed with ❤️ by **Monayem Hossain**.
 
 - GitHub: [@Monayem Hossain](https://github.com/Monayem-Hossain)
 - Email: `monayamhossain2018@gmail.com`
+
+---
+
+## 🤖 Acknowledgements
+
+**Crono** was fully architected, designed, and manually tested by **Monayem Hossain**, with **Google Gemini** acting as the coding partner to implement the logic and features.
 
 ---
 
